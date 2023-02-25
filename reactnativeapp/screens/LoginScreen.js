@@ -12,9 +12,14 @@ export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
 
   const onSignInPress = () => {
-    // make an array with the date and time of every login
-    let userData = loginMap.get(email)
+    // check to ensure that the username and email are not empty
+    if (username == '' || email == '') {
+      alert("Please enter a valid username and email!");
+      return;
+    }
+    
     // check if the email is in the map
+    let userData = loginMap.get(email);
     if (userData == undefined) {
       // if it is, add the new date and time to the array
       loginMap.set(email, [username, [Date().toLocaleString()]]);

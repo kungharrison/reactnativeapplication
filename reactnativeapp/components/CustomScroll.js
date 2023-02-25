@@ -1,15 +1,15 @@
 import { Text, StyleSheet, ScrollView, View } from 'react-native';
 
 export const CustomScroll = (props) => {
-  let logonInfo = props.data;
-  let logonInfoList = [];
-  for (let i = 0; i < logonInfo.length; i++) {
-    logonInfoList.push(<Text style={styles.logItem}>Logged in at: {logonInfo[i]}</Text>);
+  let scrollItems = props.data;
+  let scrollItemList = [];
+  for (let i = 0; i < scrollItems.length; i++) {
+    scrollItemList.push(<Text style={styles.logItem}>Logged in at: {scrollItems[i]}</Text>);
   }
   return (
     <View style={styles.logContainer}>
       <ScrollView>
-        {logonInfoList}
+        {scrollItemList}
       </ScrollView>
     </View>
   );
@@ -18,7 +18,6 @@ export const CustomScroll = (props) => {
 const styles = StyleSheet.create({
   logItem: {
     width: '80%',
-    // center
     alignSelf: 'center',
     margin: 8,
     borderRadius: 90,
