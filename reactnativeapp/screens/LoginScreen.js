@@ -2,30 +2,32 @@ import { useState } from 'react'
 import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 import { CustomInput } from '../components/CustomInput';
 import { CustomButton } from '../components/CustomButton';
+import { CustomText } from '../components/CustomText';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const onSignInPress = () => {
-    console.warn('Sign in pressed');
+    navigation.navigate('HomeScreen');
   }
 
   return (
     <View style={styles.appContainer}>
-      <Text style={styles.header}>Login</Text>
+      <CustomText type='header' text="Login" />
       <CustomInput
         text="Name"
-        placeholder="Name" 
-        value={username} 
+        placeholder="Name"
+        value={username}
         setValue={setUsername}
       />
-      <CustomInput 
+      <CustomInput
         text="Email"
-        placeholder="Email" 
-        value={email} 
+        placeholder="Email"
+        value={email}
         setValue={setEmail}
       />
-      <CustomButton 
+      <CustomButton
         text="Login"
         onPress={onSignInPress}
       />
