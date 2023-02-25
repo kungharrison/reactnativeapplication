@@ -5,9 +5,11 @@ export const CustomScroll = (props) => {
   let scrollItemList = [];
   for (let i = 0; i < scrollItems.length; i++) {
     scrollItemList.push(
-      <Text style={styles.scrollItem} key={i}>
-        Logged in at: {scrollItems[i]}
-      </Text>
+      <View style={styles.scrollItem}>
+        <Text key={i}>
+          Logged in at: {scrollItems[i]}
+        </Text>
+      </View>
     );
   }
   return (
