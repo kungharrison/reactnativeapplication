@@ -7,7 +7,7 @@ import { CustomScroll } from '../components/CustomScroll';
 
 export default function HomeScreen({ navigation }) {
   const route = useRoute();
-  const numLogins = route.params.data[1].length; // length of user timestamps list
+  const numLogins = route.params.data[1].length; // length of user timestamps list from LoginScreen
 
   const onLogOutPress = () => {
     navigation.navigate('LoginScreen');
