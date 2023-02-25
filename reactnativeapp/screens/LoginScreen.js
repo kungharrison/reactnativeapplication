@@ -5,7 +5,9 @@ import { CustomInput } from '../components/CustomInput';
 import { CustomButton } from '../components/CustomButton';
 import { CustomText } from '../components/CustomText';
 
-const loginMap = new Map();
+// TODO: userDatabase acts as user database, replace with a database in production (i.e. API calls to Firebase)
+// stores email as key and array of username and array of timestamps as value
+const userDatabase = new Map();
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
@@ -17,27 +19,31 @@ export default function LoginScreen({ navigation }) {
       alert("Please enter a valid username and email!");
       return;
     }
-    
-    // check if the email is in the map
-    let userData = loginMap.get(email);
+
+    let userData = userDatabase.get(email);
     if (userData == undefined) {
-      // if it is, add the new date and time to the array
-      loginMap.set(email, [username, [Date().toLocaleString()]]);
+      // email is not in database, associate name and add timestamp
+      userDatabase.set(email, [username, [Date().toLocaleString()]]);
     }
     else if (userData[0] == username) {
-      // if it is, add the new date and time to the array
+      // email is in database and username matches, add timestamp
       userData[1].push(Date().toLocaleString());
     }
     else {
+      // email is in database but username does not match
       alert("Email already exists with a different username!");
       return;
     }
-    navigation.navigate('HomeScreen', { data: loginMap.get(email) });
+
+    navigation.navigate('HomeScreen', { data: userDatabase.get(email) });
   }
 
   return (
     <View style={styles.appContainer}>
-      <CustomText type='header' text="Login" />
+      <CustomText 
+        type='header' 
+        text="Login" 
+      />
       <CustomInput
         text="Name"
         placeholder="Enter Name Here"
@@ -63,12 +69,5 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16
-  },
-  header: {
-    paddingTop: '20%',
-    padding: 16,
-    fontSize: 40,
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
 });
