@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+
 import { CustomButton } from '../components/CustomButton';
 import { CustomText } from '../components/CustomText';
-import { useRoute } from '@react-navigation/native';
+import { CustomScroll } from '../components/CustomScroll';
 
 export default function HomeScreen({ navigation }) {
   const route = useRoute();
@@ -10,25 +12,19 @@ export default function HomeScreen({ navigation }) {
   const onLogOutPress = () => {
     navigation.navigate('LoginScreen');
   }
-  function addLogonInfo() {
-    let logonInfo = route.params.data[1];
-    let logonInfoList = [];
-    for (let i = 0; i < logonInfo.length; i++) {
-      logonInfoList.push(<Text style={styles.logItem}>Logged in at: {logonInfo[i]}</Text>);
-    }
-    return logonInfoList;
-  }
 
   return (
     <View style={styles.appContainer}>
       <View>
-        <CustomText type='header' text="Home" />
-        <CustomText type='body' text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + " times."} />
-        <View style={styles.logContainer}>
-          <ScrollView>
-            {addLogonInfo()}
-          </ScrollView>
-        </View>
+        <CustomText 
+          type='header' 
+          text="Home" 
+        />
+        <CustomText 
+          type='body' 
+          text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + " times."} 
+        />
+        <CustomScroll data={route.params.data[1]} />
         <CustomButton 
           text="Logout"
           onPress={onLogOutPress}
@@ -43,22 +39,5 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16
-  },
-  logContainer: {
-    borderWidth: 1,
-    height: '50%',
-    borderRadius: 10,
-  },
-  logItem: {
-    width: '80%',
-    // center
-    alignSelf: 'center',
-    margin: 8,
-    borderRadius: 90,
-    backgroundColor: 'lightblue',
-    padding: 8,
-    color: 'black',
-    borderColor: 'black',
-    borderWidth: 1,
   },
 });
