@@ -15,21 +15,19 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.appContainer}>
-      <View>
-        <CustomText 
-          type='header' 
-          text="Home" 
-        />
-        <CustomText 
-          type='body' 
-          text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + " times."} 
-        />
-        <CustomScroll data={route.params.data[1]} />
-        <CustomButton 
-          text="Logout"
-          onPress={onLogOutPress}
-        />
-      </View>
+      <CustomText 
+        type='header' 
+        text="Home" 
+      />
+      <CustomText 
+        type='body' 
+        text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + " times."} 
+      />
+      <CustomScroll data={route.params.data[1]} />
+      <CustomButton 
+        text="Logout"
+        onPress={onLogOutPress}
+      />
     </View>
   );
 }

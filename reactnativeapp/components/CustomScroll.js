@@ -4,10 +4,14 @@ export const CustomScroll = (props) => {
   let scrollItems = props.data;
   let scrollItemList = [];
   for (let i = 0; i < scrollItems.length; i++) {
-    scrollItemList.push(<Text style={styles.logItem}>Logged in at: {scrollItems[i]}</Text>);
+    scrollItemList.push(
+      <Text style={styles.scrollItem} key={i}>
+        Logged in at: {scrollItems[i]}
+      </Text>
+    );
   }
   return (
-    <View style={styles.logContainer}>
+    <View style={styles.scrollContainer}>
       <ScrollView>
         {scrollItemList}
       </ScrollView>
@@ -16,7 +20,7 @@ export const CustomScroll = (props) => {
 }
 
 const styles = StyleSheet.create({
-  logItem: {
+  scrollItem: {
     width: '80%',
     alignSelf: 'center',
     margin: 8,
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
   },
-  logContainer: {
+  scrollContainer: {
     borderWidth: 1,
     height: '50%',
     borderRadius: 10,
