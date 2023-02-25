@@ -6,9 +6,19 @@ import { useRoute } from '@react-navigation/native';
 export default function HomeScreen({ navigation }) {
   const route = useRoute();
   const numLogins = route.params.data[1].length;
+
   const onLogOutPress = () => {
     navigation.navigate('LoginScreen');
   }
+  function addLogonInfo() {
+    let logonInfo = route.params.data[1];
+    let logonInfoList = [];
+    for (let i = 0; i < logonInfo.length; i++) {
+      logonInfoList.push(<Text style={styles.logItem}>Logged in at: {logonInfo[i]}</Text>);
+    }
+    return logonInfoList;
+  }
+
   return (
     <View style={styles.appContainer}>
       <View>
@@ -16,17 +26,7 @@ export default function HomeScreen({ navigation }) {
         <CustomText type='body' text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + " times."} />
         <View style={styles.logContainer}>
           <ScrollView>
-            <Text style={styles.logItem}>Logged in at: </Text>
-            <Text style={styles.logItem}>Goal 2</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
-            <Text style={styles.logItem}>Goal 3</Text>
+            {addLogonInfo()}
           </ScrollView>
         </View>
         <CustomButton 
