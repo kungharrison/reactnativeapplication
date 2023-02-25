@@ -1,15 +1,32 @@
 import { useState } from 'react'
-import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { CustomInput } from '../components/CustomInput';
 import { CustomButton } from '../components/CustomButton';
 import { CustomText } from '../components/CustomText';
-import { useNavigation } from '@react-navigation/native';
+
+const loginMap = new Map();
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+
   const onSignInPress = () => {
-    navigation.navigate('HomeScreen');
+    // make an array with the date and time of every login
+    let userData = loginMap.get(email)
+    // check if the email is in the map
+    if (userData == undefined) {
+      // if it is, add the new date and time to the array
+      loginMap.set(email, [username, [Date().toLocaleString()]]);
+    }
+    else if (userData[0] == username) {
+      // if it is, add the new date and time to the array
+      userData[1].push(Date().toLocaleString());
+    }
+    else {
+      alert("Email already exists with a different username!");
+      return;
+    }
+    navigation.navigate('HomeScreen', { data: loginMap.get(email) });
   }
 
   return (
@@ -17,13 +34,13 @@ export default function LoginScreen({ navigation }) {
       <CustomText type='header' text="Login" />
       <CustomInput
         text="Name"
-        placeholder="Name"
+        placeholder="Enter Name Here"
         value={username}
         setValue={setUsername}
       />
       <CustomInput
         text="Email"
-        placeholder="Email"
+        placeholder="Enter Email Here"
         value={email}
         setValue={setEmail}
       />

@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { CustomButton } from '../components/CustomButton';
 import { CustomText } from '../components/CustomText';
+import { useRoute } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
+  const route = useRoute();
+  const numLogins = route.params.data[1].length;
   const onLogOutPress = () => {
     navigation.navigate('LoginScreen');
   }
@@ -11,17 +13,20 @@ export default function HomeScreen({ navigation }) {
     <View style={styles.appContainer}>
       <View>
         <CustomText type='header' text="Home" />
-        <CustomText type='body' text="Hello NAME, You have logged in CNT times." />
-        <View style={styles.goalsContainer}>
+        <CustomText type='body' text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + " times."} />
+        <View style={styles.logContainer}>
           <ScrollView>
-            <View style={styles.goalsContainer}>
-              <Text style={styles.goalItem}>Goal 1</Text>
-              <Text style={styles.goalItem}>Goal 2</Text>
-              <Text style={styles.goalItem}>Goal 3</Text>
-              <Text style={styles.goalItem}>Goal 3</Text>
-              <Text style={styles.goalItem}>Goal 3</Text>
-              <Text style={styles.goalItem}>Goal 3</Text>
-            </View>
+            <Text style={styles.logItem}>Logged in at: </Text>
+            <Text style={styles.logItem}>Goal 2</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
+            <Text style={styles.logItem}>Goal 3</Text>
           </ScrollView>
         </View>
         <CustomButton 
@@ -39,10 +44,15 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 16
   },
-  goalsContainer: {
-    borderWidth:1,
+  logContainer: {
+    borderWidth: 1,
+    height: '50%',
+    borderRadius: 10,
   },
-  goalItem: {
+  logItem: {
+    width: '80%',
+    // center
+    alignSelf: 'center',
     margin: 8,
     borderRadius: 90,
     backgroundColor: 'lightblue',
