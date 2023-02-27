@@ -9,6 +9,12 @@ export default function HomeScreen({ navigation }) {
   const route = useRoute();
   const numLogins = route.params.data[1].length; // length of user timestamps list from LoginScreen
 
+  // determine if "times" or "time" should be used in the end message based on numLogins
+  let endMessage = " times.";
+  if (numLogins == 1) {
+    endMessage = " time.";
+  }
+
   const onLogOutPress = () => {
     navigation.navigate('LoginScreen');
   }
@@ -21,7 +27,7 @@ export default function HomeScreen({ navigation }) {
       />
       <CustomText 
         type='body' 
-        text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + " times."} 
+        text={"Hello " + route.params.data[0] + ", You have logged in " + numLogins + endMessage} 
       />
       <CustomScroll data={route.params.data[1]} />
       <CustomButton 
