@@ -2,8 +2,8 @@
 The user signs in with their name and email and after clicking “Login”, “Home” screen displays user name, and how many times the user has logged in as well as the login timestamps.
 
 ## Documentation
-[GitHub Wiki Link](https://github.com/kungharrison/reactnativeapplication/wiki)
-[Video Explanation Link](https://youtu.be/7QDVDOjv7cI)
+* [GitHub Wiki Link](https://github.com/kungharrison/reactnativeapplication/wiki)
+* [Video Explanation Link](https://youtu.be/7QDVDOjv7cI)
 
 ## Usage
 1. Download repository zip
