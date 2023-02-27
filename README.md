@@ -3,6 +3,7 @@ The user signs in with their name and email and after clicking “Login”, “H
 
 ## Documentation
 [GitHub Wiki Link](https://github.com/kungharrison/reactnativeapplication/wiki)
+[Video Explanation Link](https://youtu.be/7QDVDOjv7cI)
 
 ## Usage
 1. Download repository zip
