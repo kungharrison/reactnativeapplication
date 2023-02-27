@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native';
 
 export const CustomInput = (props) => {
   return (
-    <View style={styles.inputContainer}>
+    <View>
       <Text style={styles.label}>{props.text}</Text>
       <TextInput 
         value={props.value}
@@ -15,9 +15,6 @@ export const CustomInput = (props) => {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-
-  },
   label: {
     fontSize: 20,
     fontWeight: 'bold',

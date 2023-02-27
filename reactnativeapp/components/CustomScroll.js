@@ -23,22 +23,27 @@ export const CustomScroll = (props) => {
 
 const styles = StyleSheet.create({
   scrollItem: {
-    width: '85%',
-    alignSelf: 'center',
-    marginVertical: 8,
-    borderRadius: 90,
     backgroundColor: 'lightblue',
+
+    width: '85%',
+
+    alignSelf: 'center',
     paddingVertical: 8,
     paddingHorizontal: 16,
+    marginVertical: 8,
+
     color: 'black',
+    borderRadius: 90,
     borderColor: 'black',
     borderWidth: 1,
   },
   scrollContainer: {
-    borderWidth: 1,
-    borderColor: 'black',
     height: '50%',
-    borderRadius: 10,
+
     marginHorizontal: 12,
+
+    borderRadius: 10,
+    borderColor: 'black',
+    borderWidth: 1,
   },
 });
